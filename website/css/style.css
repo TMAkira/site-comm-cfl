@@ -1,18 +1,18 @@
 /* ============================================
    CFL - Site Commercial - Styles Globaux
-   Version 2.0 - Thème sobre et professionnel
+   Version sobre et professionnelle
    ============================================ */
 
 :root {
-    /* Palette CFL - Couleurs sobres et professionnelles */
-    --primary-color: #6eacca;       /* Bleu clair CFL */
-    --primary-dark: #4a8aa8;        /* Bleu foncé */
-    --secondary-color: #5a7d8f;     /* Bleu-gris sobre */
-    --accent-color: #8ec5d9;        /* Bleu très clair pour accents */
-    --success-color: #4ade80;
-    --warning-color: #fbbf24;
-    --danger-color: #ef4444;
-    --text-dark: #1f2937;
+    /* Palette CFL - Couleurs sobres et professionnelles pour le secteur funéraire */
+    --primary-color: #5a7d8f;       /* Bleu-gris sobre */
+    --primary-dark: #3d5561;        /* Bleu-gris foncé */
+    --secondary-color: #4a6070;     /* Gris-bleu très sobre */
+    --accent-color: #7a9aab;        /* Bleu-gris clair pour accents */
+    --success-color: #5a8a6f;       /* Vert sobre */
+    --warning-color: #b8935a;       /* Beige sobre */
+    --danger-color: #a85555;        /* Rouge sobre */
+    --text-dark: #2c3e50;
     --text-gray: #6b7280;
     --text-light: #9ca3af;
     --bg-light: #f9fafb;
@@ -360,7 +360,7 @@ p {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,101.3C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,101.3C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
     background-size: cover;
     opacity: 0.5;
 }
@@ -407,12 +407,12 @@ p {
    ============================================ */
 
 .feature-highlight {
-    background: linear-gradient(135deg, #e8f4f8 0%, #d4ebf2 100%);
+    background: linear-gradient(135deg, #e8f1f5 0%, #dde7ec 100%);
     padding: 2.5rem;
     border-radius: var(--border-radius);
     text-align: center;
     margin: 3rem 0;
-    border: 1px solid var(--accent-color);
+    border: 1px solid #c5d5dd;
 }
 
 .feature-highlight h3 {
@@ -422,7 +422,7 @@ p {
 }
 
 .benefit-box {
-    background: #f0f7fa;
+    background: #f0f5f7;
     padding: 1rem 1.5rem;
     border-radius: 6px;
     border-left: 4px solid var(--primary-color);
@@ -643,7 +643,7 @@ p {
    ============================================ */
 
 footer {
-    background: #1f2937;
+    background: #2c3e50;
     color: white;
     padding: 3rem 2rem 1.5rem;
 }
