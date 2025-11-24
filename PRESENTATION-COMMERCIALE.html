@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CFL - Fonctionnalités du Logiciel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 30px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+        }
+
+        .intro h2 {
+            font-size: 2em;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .intro p {
+            font-size: 1.1em;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .section-header h2 {
+            font-size: 2em;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-header .icon {
+            font-size: 1.5em;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-card .emoji {
+            font-size: 1.5em;
+        }
+
+        .feature-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .benefit {
+            background: #f0f4ff;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .benefit strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .benefit-text {
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .highlight-box h3 {
+            font-size: 1.8em;
+            color: #c44569;
+            margin-bottom: 15px;
+        }
+
+        .highlight-box p {
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        .module-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .module-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .module-list li:last-child {
+            border-bottom: none;
+        }
+
+        .module-list li::before {
+            content: '?';
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        footer {
+            background: #2d3436;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 0.9em;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>?? CFL - Gestion Funéraire Complète</h1>
+            <p>La solution tout-en-un pour moderniser et simplifier votre entreprise funéraire</p>
+        </header>
+
+        <div class="content">
+            <div class="intro">
+                <h2>Une plateforme complète pour gérer l'intégralité de votre activité</h2>
+                <p>
+                    CFL centralise toutes vos opérations funéraires dans un seul logiciel moderne et intuitif. 
+                    Gagnez du temps, réduisez les erreurs et offrez un meilleur service à vos familles.
+                </p>
+            </div>
+
+            <!-- GESTION DES DÉFUNTS ET OPÉRATIONS -->
+            <div class="section">
+                <div class="section-header">
+                    <h2><span class="icon">??</span> Gestion des défunts et opérations funéraires</h2>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3><span class="emoji">?</span> Admissions</h3>
+                        <p>Enregistrez rapidement chaque nouveau dossier avec toutes les informations nécessaires.</p>
+                        <div class="benefit">
+                            <strong>?? Gain de temps</strong>
+                            <span class="benefit-text">Saisie simplifiée et guidée, réduction des erreurs de saisie</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> Fichier Défunts</h3>
+                        <p>Gérez l'ensemble des informations sur chaque défunt : état civil, famille, coordonnées, volontés.</p>
+                        <div class="benefit">
+                            <strong>?? Centralisation</strong>
+                            <span class="benefit-text">Toutes les informations au même endroit, accessibles en un clic</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><span class="emoji">???</span> Base Communes</h3>
+                        <p>Accédez instantanément aux informations des communes : cimetières, services d'état civil, contacts.</p>
+                        <div class="benefit">
+                            <strong>?? Efficacité</strong>
+                            <span class="benefit-text">Plus besoin de chercher les coordonnées, tout est pré-renseigné</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> Thanatopraxie</h3>
+                        <p>Planifiez et suivez les interventions de soins de conservation avec tous les détails nécessaires.</p>
+                        <div class="benefit">
+                            <strong>?? Traçabilité</strong>
+                            <span class="benefit-text">Suivi complet des interventions et des intervenants</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> Répertoires</h3>
+                        <p>Gérez vos contacts professionnels : fournisseurs, partenaires, prestataires externes.</p>
+                        <div class="benefit">
+                            <strong>?? Organisation</strong>
+                            <span class="benefit-text">Carnet d'adresses professionnel centralisé et toujours à jour</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PLANNINGS ET LOGISTIQUE -->
+            <div class="section">
+                <div class="section-header">
+                    <h2><span class="icon">??</span> Plannings et logistique</h2>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> Chambres funéraires</h3>
+                        <p>Gérez l'occupation de vos chambres funéraires, les admissions, les départs et la disponibilité en temps réel.</p>
+                        <div class="benefit">
+                            <strong>?? Optimisation</strong>
+                            <span class="benefit-text">Vision claire des disponibilités, évitez les conflits de réservation</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> Planning Pompes Funèbres</h3>
+                        <p>Planifiez toutes vos opérations : mises en bière, transports, cérémonies, inhumations.</p>
+                        <div class="benefit">
+                            <strong>?? Coordination</strong>
+                            <span class="benefit-text">Synchronisation parfaite entre équipes et véhicules</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> Plannings Crémation</h3>
+                        <p>Planifiez les créations pour vos crématoriums avec gestion des créneaux et des disponibilités.</p>
+                        <div class="benefit">
+                            <strong>?? Productivité</strong>
+                            <span class="benefit-text">Optimisation du remplissage, réduction des temps morts</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><span class="emoji">???</span> Gestion des Salles</h3>
+                        <p>Planifiez l'utilisation de vos salles de cérémonie avec gestion des réservations et disponibilités.</p>
+                        <div class="benefit">
+                            <strong>?? Rentabilité</strong>
+                            <span class="benefit-text">Maximisez l'occupation de vos salles</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMMERCE ET FACTURATION -->
+            <div class="section">
+                <div class="section-header">
+                    <h2><span class="icon">??</span> Commerce et facturation</h2>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> Documents de vente</h3>
+                        <p>Créez rapidement vos devis, commandes et contrats directement depuis le dossier.</p>
+                        <ul class="module-list">
+                            <li>Devis personnalisables</li>
+                            <li>Transformation devis ? commande</li>
+                            <li>Gestion des contrats obsèques</li>
+                        </ul>
+                        <div class="benefit">
+                            <strong>?? Rapidité</strong>
+                            <span class="benefit-text">Édition en quelques clics, envoi immédiat par email</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> Factures</h3>
+                        <p>Générez automatiquement vos factures à partir des devis et commandes validés.</p>
+                        <div class="benefit">
+                            <strong>?? Automatisation</strong>
+                            <span class="benefit-text">Fini la double saisie, la facturation est automatique</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> Règlements</h3>
+                        <p>Enregistrez tous les types de paiements : espèces, chèques, virements, prises en charge.</p>
+                        <div class="benefit">
+                            <strong>?? Suivi</strong>
+                            <span class="benefit-text">Vision claire de l'encaissement pour chaque dossier</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> Suivi des dus</h3>
+                        <p>Suivez en temps réel les factures impayées et les relances à effectuer.</p>
+                        <div class="benefit">
+                            <strong>?? Trésorerie</strong>
+                            <span class="benefit-text">Réduisez les impayés, améliorez votre trésorerie</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> Fichier Clients</h3>
+                        <p>Gérez votre base de clients avec historique des dossiers et des interactions.</p>
+                        <div class="benefit">
+                            <strong>?? Relation client</strong>
+                            <span class="benefit-text">Historique complet pour un service personnalisé</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> Gestion des stocks</h3>
+                        <p>Suivez vos articles funéraires : cercueils, urnes, plaques, accessoires avec alertes de stock bas.</p>
+                        <div class="benefit">
+                            <strong>?? Contrôle</strong>
+                            <span class="benefit-text">Évitez les ruptures, optimisez vos commandes fournisseurs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SMART DOCUMENTS -->
+            <div class="section">
+                <div class="section-header">
+                    <h2><span class="icon">??</span> Smart Documents - Génération automatique</h2>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>?? Innovation majeure : des documents qui se remplissent automatiquement !</h3>
+                    <p>
+                        Créez vos modèles de documents une seule fois, et générez-les automatiquement pour chaque dossier. 
+                        Fini la ressaisie !
+                    </p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> Bibliothèque de templates</h3>
+                        <p>Organisez vos modèles de documents par dossiers : attestations, certificats, courriers, rapports.</p>
+                        <div class="benefit">
+                            <strong>?? Organisation</strong>
+                            <span class="benefit-text">Tous vos modèles rangés et facilement accessibles</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> Éditeur intelligent</h3>
+                        <p>Créez vos documents avec un éditeur de texte enrichi et insérez des champs dynamiques.</p>
+                        <p><strong>Exemple :</strong> "Le défunt [[Defunt.Nom]] [[Defunt.Prenom]] né le [[Defunt.DateNaissance|dd/MM/yyyy]]"</p>
+                        <div class="benefit">
+                            <strong>?? Flexibilité</strong>
+                            <span class="benefit-text">Mise en forme professionnelle, formatage automatique des dates</span>
+                        </div>
+                        <span class="tag">Sauvegarde automatique</span>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> Champs dynamiques</h3>
+                        <p>Insérez automatiquement les informations du défunt, de la famille, des opérations, etc.</p>
+                        <ul class="module-list">
+                            <li>Identité du défunt</li>
+                            <li>Dates et lieux</li>
+                            <li>Informations famille</li>
+                            <li>Détails des opérations</li>
+                            <li>Informations commerciales</li>
+                        </ul>
+                        <div class="benefit">
+                            <strong>?? Zéro erreur</strong>
+                            <span class="benefit-text">Les données sont toujours à jour et exactes</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> Génération PDF instantanée</h3>
+                        <p>Générez vos documents au format PDF professionnel en un clic pour n'importe quel dossier.</p>
+                        <div class="benefit">
+                            <strong>?? Productivité explosive</strong>
+                            <span class="benefit-text">Ce qui prenait 15 minutes prend maintenant 30 secondes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box" style="background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);">
+                    <h3>?? Gain de temps estimé : 2 à 4 heures par jour !</h3>
+                    <p>
+                        Plus de copier-coller, plus de ressaisie manuelle, plus d'erreurs de frappe. 
+                        Concentrez-vous sur l'accompagnement des familles, pas sur la paperasse.
+                    </p>
+                </div>
+            </div>
+
+            <!-- CONFIGURATION ET SUPPORT -->
+            <div class="section">
+                <div class="section-header">
+                    <h2><span class="icon">??</span> Configuration et support</h2>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> Configuration complète</h3>
+                        <p>Paramétrez le logiciel selon votre organisation : agences, équipes, tarifs, articles, etc.</p>
+                        <div class="benefit">
+                            <strong>?? Personnalisation</strong>
+                            <span class="benefit-text">Le logiciel s'adapte à VOTRE façon de travailler</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> Support intégré</h3>
+                        <p>Besoin d'aide ? Créez un ticket directement depuis le logiciel, notre équipe vous répond rapidement.</p>
+                        <div class="benefit">
+                            <strong>?? Accompagnement</strong>
+                            <span class="benefit-text">Vous n'êtes jamais seul, notre support est réactif</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AVANTAGES GLOBAUX -->
+            <div class="section">
+                <div class="section-header">
+                    <h2><span class="icon">??</span> Pourquoi choisir CFL ?</h2>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> 100% Web</h3>
+                        <p>Accédez à votre logiciel depuis n'importe quel ordinateur avec une connexion internet.</p>
+                        <div class="benefit">
+                            <strong>?? Mobilité</strong>
+                            <span class="benefit-text">Travaillez depuis le bureau, la maison ou en déplacement</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> Mises à jour automatiques</h3>
+                        <p>Profitez des nouvelles fonctionnalités sans rien installer, tout est automatique.</p>
+                        <div class="benefit">
+                            <strong>?? Évolutivité</strong>
+                            <span class="benefit-text">Votre logiciel s'améliore en continu</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> Sécurité et confidentialité</h3>
+                        <p>Vos données sont hébergées de manière sécurisée et sauvegardées quotidiennement.</p>
+                        <div class="benefit">
+                            <strong>?? Tranquillité</strong>
+                            <span class="benefit-text">Conformité RGPD, vos données sont protégées</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> Multi-utilisateurs</h3>
+                        <p>Plusieurs personnes peuvent travailler simultanément sur différents dossiers.</p>
+                        <div class="benefit">
+                            <strong>?? Collaboration</strong>
+                            <span class="benefit-text">Toute l'équipe travaille en temps réel</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> Interface moderne</h3>
+                        <p>Design intuitif et ergonomique, facile à prendre en main même sans formation poussée.</p>
+                        <div class="benefit">
+                            <strong>?? Simplicité</strong>
+                            <span class="benefit-text">Vos équipes sont opérationnelles rapidement</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><span class="emoji">??</span> Vision globale</h3>
+                        <p>Tableaux de bord et statistiques pour piloter votre activité en temps réel.</p>
+                        <div class="benefit">
+                            <strong>?? Décision</strong>
+                            <span class="benefit-text">Des chiffres fiables pour prendre les bonnes décisions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONCLUSION -->
+            <div class="highlight-box" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                <h3 style="color: white;">?? CFL : Le partenaire de votre transformation digitale</h3>
+                <p style="color: white;">
+                    Rejoignez les entreprises funéraires qui ont fait le choix de la modernité et de l'efficacité. 
+                    CFL vous fait gagner du temps, réduire les erreurs et améliorer votre service aux familles.
+                </p>
+            </div>
+        </div>
+
+        <footer>
+            <p>CFL - Solution de gestion pour entreprises funéraires</p>
+            <p style="margin-top: 10px; font-size: 0.85em; opacity: 0.8;">
+                Ce document présente les fonctionnalités principales du logiciel CFL. 
+                Pour une démonstration personnalisée, contactez notre équipe commerciale.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
